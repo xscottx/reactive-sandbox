@@ -14,10 +14,10 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class ReactiveExamplesTest {
 
-    Person michael = new Person("Michael", "Weston");
-    Person fiona = new Person("Fiona", "Glenanne");
-    Person sam = new Person("Sam", "Axe");
-    Person jesse = new Person("Jesse", "Porter");
+    private Person michael = new Person("Michael", "Weston");
+    private Person fiona = new Person("Fiona", "Glenanne");
+    private Person sam = new Person("Sam", "Axe");
+    private Person jesse = new Person("Jesse", "Porter");
 
     @Test
     public void monoTests() throws Exception {
@@ -38,6 +38,7 @@ public class ReactiveExamplesTest {
 
         PersonCommand command = personMono
                 .map(person -> { //type transformation
+                    person.setFirstName("Hoang");
                     return new PersonCommand(person);
                 }).block();
 
